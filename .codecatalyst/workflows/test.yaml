@@ -1,0 +1,40 @@
+Name: test
+SchemaVersion: "1.0"
+RunMode: QUEUED
+
+# Optional - Set automatic triggers.
+Triggers:      
+  - Type: PULLREQUEST
+    Events:
+      - OPEN
+      - REVISION
+      
+Actions:
+  Maven_Test:
+    # Identifies the action. Do not modify this value.
+    Identifier: aws/managed-test@v1.0.0
+
+    # Specifies the source and/or artifacts to pass to the action as input.
+    Inputs:
+      # Optional
+      Sources:
+        - WorkflowSource # This specifies that the action requires this Workflow as a source
+
+    Outputs:
+      # Optional; Automatically discover reports for popular test frameworks
+      AutoDiscoverReports:
+        Enabled: true
+        # Use as prefix for the report files
+        # You can use Sonar Maven Scanner + sonar.qualitygate.wait config to wait for an analysis and to fail workflow if quality gates are not respected
+        ReportNamePrefix: Autodiscovered
+        SuccessCriteria:
+          PassRate: 100
+          LineCoverage: 25
+
+    # Defines the action's properties.
+    Configuration:
+      # Required - Steps are sequential instructions that run shell commands
+      Steps:
+        # use run-tests $FRAMEWORK to enable advanced testing features such as test case retries
+        # see info link in shell commands section for more details
+        - Run: ./mvnw -ntp verify

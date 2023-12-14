@@ -1,0 +1,43 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": [
+        "ecr:*",
+        "sts:AssumeRole",
+        "sts:GetServiceBearerToken",
+        "codeartifact:*"
+      ],
+      "Resource": "*",
+      "Effect": "Allow"
+    },
+    {
+      "Action": [
+        "codeguru-reviewer:ListRepositoryAssociations",
+        "codeguru-reviewer:AssociateRepository",
+        "codeguru-reviewer:DescribeRepositoryAssociation",
+        "codeguru-reviewer:CreateCodeReview",
+        "codeguru-reviewer:DescribeCodeReview",
+        "codeguru-reviewer:ListRecommendations",
+        "iam:CreateServiceLinkedRole"
+      ],
+      "Resource": "*",
+      "Effect": "Allow"
+    },
+    {
+      "Action": [
+        "s3:CreateBucket",
+        "s3:GetBucket*",
+        "s3:List*",
+        "s3:GetObject",
+        "s3:PutObject",
+        "s3:DeleteObject"
+      ],
+      "Resource": [
+        "arn:aws:s3:::codeguru-reviewer-cli-*",
+        "arn:aws:s3:::codeguru-reviewer-cli-*/*"
+      ],
+      "Effect": "Allow"
+    }
+  ]
+}

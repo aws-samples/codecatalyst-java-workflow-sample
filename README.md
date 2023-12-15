@@ -1,4 +1,4 @@
-# SpringBoot Application & CodeCatalyst: CI flows
+# CodeCatalyst CI Workflows for Java-SpringBoot Application
 * This is a simple example of two Continuous Integration workflows created in CodeCatalyst for a Java & Spring-Boot based backend application. The application exposes one API to perform a sum between integers Calculation
 * The repository includes, inside the `.codecatalyst/workloads` folder, the definition of two CodeCatalyst workflows:
   * `build.yaml`: the workflow builds the jar, performs a CodeGuru Reviewer full-repository scan, uploads it to CodeArtifact, builds the Docker images, uploads it to ECR

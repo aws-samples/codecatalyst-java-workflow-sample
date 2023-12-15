@@ -62,11 +62,11 @@ This workflow performs several steps, more specifically:
 ![](images/build_workflow.png?raw=true)
 
 ## Resources
-[Setting up CodeCatalyst](https://docs.aws.amazon.com/codecatalyst/latest/userguide/setting-up-topnode.html)  
-[Getting Started with CodeGuru Reviewer](https://docs.aws.amazon.com/codeguru/latest/reviewer-ug/getting-started-with-guru.html)  
-[CodeGuru Reviewer Wrapper CLI](https://github.com/aws/aws-codeguru-cli)
-[Getting started with CodeArtifact](https://docs.aws.amazon.com/codeartifact/latest/ug/getting-started.html) 
-[Amazon ECR User Guide](https://docs.aws.amazon.com/AmazonECR/latest/userguide/what-is-ecr.html)  
+* [Setting up CodeCatalyst](https://docs.aws.amazon.com/codecatalyst/latest/userguide/setting-up-topnode.html)  
+* [Getting Started with CodeGuru Reviewer](https://docs.aws.amazon.com/codeguru/latest/reviewer-ug/getting-started-with-guru.html)  
+* [CodeGuru Reviewer Wrapper CLI](https://github.com/aws/aws-codeguru-cli)
+* [Getting started with CodeArtifact](https://docs.aws.amazon.com/codeartifact/latest/ug/getting-started.html) 
+* [Amazon ECR User Guide](https://docs.aws.amazon.com/AmazonECR/latest/userguide/what-is-ecr.html)  
 
 ## Security
 

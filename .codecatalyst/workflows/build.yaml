@@ -102,6 +102,7 @@ Actions:
         - Name: jar_artifact
           Files:
             - target/*.jar
+            - Dockerfile
     # Defines the action's properties.
     Configuration:
       # Required - Steps are sequential instructions that run shell commands
@@ -118,46 +119,30 @@ Actions:
         - Role: CodeCatalystTestEnvironmentRole
           Name: "123456789012"
       Name: TestEnvironment
-  Build_Docker_Image:
+  Build_Push_Docker_Image:
     DependsOn:
       - Mvn_Build_And_Deploy
     # Identifies the action. Do not modify this value.
-    Identifier: aws/managed-test@v1.0.0
+    Identifier: codecatalyst-labs/push-to-ecr@v1.0.3
 
     # Specifies the source and/or artifacts to pass to the action as input.
     Inputs:
       # Optional
-      Sources:
-        - WorkflowSource # This specifies that the action requires this Workflow as a source
       Artifacts:
         - jar_artifact
 
-    Outputs:
-      # Optional; Automatically discover reports for popular test frameworks
-      AutoDiscoverReports:
-        Enabled: true
-        # Use as prefix for the report files
-        ReportNamePrefix: rpt
-
-    # Defines the action's properties.
-    Configuration:
-      # Required - Steps are sequential instructions that run shell commands
-      Steps:
-        # use run-tests $FRAMEWORK to enable advanced testing features such as test case retries
-        # see info link in shell commands section for more details
-        - Run: mkdir target
-        - Run: ls $CATALYST_SOURCE_DIR_jar_artifact
-        - Run: cp $CATALYST_SOURCE_DIR_jar_artifact/target/*.jar ./target
-        - Run: ls target/
-        - Run: export MVN_VERSION=`mvn help:evaluate -Dexpression=project.version -q -DforceStdout`
-        - Run: docker login -u AWS -p $(aws ecr get-login-password --region us-east-1) 123456789012.dkr.ecr.us-east-1.amazonaws.com
-        - Run: docker build -t rest-calculator .
-        - Run: docker tag rest-calculator:latest 123456789012.dkr.ecr.us-east-1.amazonaws.com/rest-calculator:$MVN_VERSION
-        - Run: docker push 123456789012.dkr.ecr.us-east-1.amazonaws.com/rest-calculator:$MVN_VERSION
-    Compute:
-      Type: EC2
+    # Required; You can use an environment, AWS account connection, and role to access AWS resources.
     Environment:
-      Connections:
-        - Role: CodeCatalystTestEnvironmentRole
-          Name: "123456789012"
       Name: TestEnvironment
+      Connections:
+        - Name: "123456789012"
+          Role:
+            CodeCatalystTestEnvironmentRole
+
+            # Defines the action's properties.
+    Configuration:
+      # Required; type: string; description: The name to use for the repository. The repository name may be specified on its own (such as nginx-web-app) or it can be prepended with a namespace to group the repository into a category (such as project-a/nginx-web-app)
+      RepositoryName: rest-calculator
+      ImageTag: latest
+      AWSRegion: us-east-1
+      PublicRepository: false

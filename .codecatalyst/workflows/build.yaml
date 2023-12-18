@@ -61,6 +61,7 @@ Actions:
     Configuration:
       GenerateReport: true
       Path: src
+      AWSRegion: us-east-1
     # Required; You can use an environment, AWS account connection, and role to access AWS resources.
     Environment:
       Connections:

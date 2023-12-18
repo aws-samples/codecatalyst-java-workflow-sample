@@ -1,7 +1,7 @@
 # CodeCatalyst CI Workflows for Java-SpringBoot Application
 * This is a simple example of two Continuous Integration workflows created in CodeCatalyst for a Java & Spring-Boot based backend application. The application exposes one API to perform a sum between integers Calculation
 * The repository includes, inside the `.codecatalyst/workloads` folder, the definition of two CodeCatalyst workflows:
-  * `build.yaml`: the workflow builds the jar, performs a CodeGuru Reviewer full-repository scan, uploads it to CodeArtifact, builds the Docker images, uploads it to ECR
+  * `build.yaml`: the workflow builds the jar, performs a CodeGuru Security review, uploads it to CodeArtifact, builds the Docker images, uploads it to ECR
   * `test.yaml`: the workflow perform unit and coverage tests on code
 
 
@@ -55,7 +55,7 @@ For unit testing we leverage JUnit 5, and for coverage test we leverage Jacoco C
 This workflow performs several steps, more specifically:
 * Listing files
 * Maven Cleaning
-* Performs a CodeGuru Reviewer full-repository scan (the report that will be produced will be available for each run)
+* Performs a Code Security Review (the report that will be produced will be available for each run)
 * Building the jar & uploading it to CodeArtifact repository 
 * Building the Docker image and uploading it to ECR 
 
@@ -63,8 +63,7 @@ This workflow performs several steps, more specifically:
 
 ## Resources
 * [Setting up CodeCatalyst](https://docs.aws.amazon.com/codecatalyst/latest/userguide/setting-up-topnode.html)  
-* [Getting Started with CodeGuru Reviewer](https://docs.aws.amazon.com/codeguru/latest/reviewer-ug/getting-started-with-guru.html)  
-* [CodeGuru Reviewer Wrapper CLI](https://github.com/aws/aws-codeguru-cli)
+* [Getting Started with CodeGuru Security](https://docs.aws.amazon.com/codeguru/latest/security-api/Welcome.html)
 * [Getting started with CodeArtifact](https://docs.aws.amazon.com/codeartifact/latest/ug/getting-started.html) 
 * [Amazon ECR User Guide](https://docs.aws.amazon.com/AmazonECR/latest/userguide/what-is-ecr.html)  
 

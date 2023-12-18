@@ -12,11 +12,11 @@
 ## Getting Started / Prerequisites
 * The example project is built with Java 17 and Maven 3. Please be aware that you'll need those to run the project locally.  
 * You'll need to create a CodeCatalyst space, a new Project with a new Code Repository
-* You'll need to connect the CodeCatalyst space to an AWS Account. This account will be used to store Docker images (ECR) and Java Artifacts (CodeArtifact)
-  * **PLEASE NOTE**: During the creation of the CodeCatalyst connection, you'll need to create a proper IAM Role that will be assumed by CodeCatalyst. For this example we've used the policy you can find in the file `CodeCatalystRolePolicyExample.json`. This IAM policy is very permissive so please **don't use it for production purposes!!**
+* You'll need to connect the CodeCatalyst Space to an AWS Account selecting one or more IAM Roles. This AWS Account will be used to store Docker images (ECR) and Java Artifacts (CodeArtifact). The connection you created will be used to interact with the AWS Account Resources through proper IAM Roles.
+  * **PLEASE NOTE**: During the creation of the CodeCatalyst connection to the target AWS Account, you'll need to create a proper IAM Role that will be assumed by CodeCatalyst (or use an existing one). For this example we've used a IAM Role assigning to it the policy you can find in the file `CodeCatalystRolePolicyExample.json`. This IAM policy is very permissive so please **don't use it for production purposes!!**
 * For this particular example we're assuming:
   * AWS Account ID: 123456789012
-  * CodeCatalyst Environment (linked to the account above) named "TestEnvironment" referencing the "CodeCatalystTestEnvironmentRole" IAM role 
+  * CodeCatalyst Environment (targeting the account above) named "TestEnvironment" referencing the "CodeCatalystTestEnvironmentRole" IAM role created in account 123456789012
 
 ### Creating ECR and CodeArtifact repositories     
 * You'll need to create an ECR repository and a CodeArtifact repository and properly substitute values inside `./codecatalyst/workflows/build.yaml`

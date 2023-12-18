@@ -16,10 +16,10 @@
   * **PLEASE NOTE**: During the creation of the CodeCatalyst connection, you'll need to create a proper IAM Role that will be assumed by CodeCatalyst. For this example we've used the policy you can find in the file `CodeCatalystRolePolicyExample.json`. This IAM policy is very permissive so please **don't use it for production purposes!!**
 * For this particular example we're assuming:
   * AWS Account ID: 123456789012
-  * CodeCatalyst Connection (linked to the account above) named "TestEnvironment" referencing the "CodeCatalystTestEnvironmentRole" IAM role 
+  * CodeCatalyst Environment (linked to the account above) named "TestEnvironment" referencing the "CodeCatalystTestEnvironmentRole" IAM role 
 
 ### Creating ECR and CodeArtifact repositories     
-* You'll need to create an ECR repository and a CodeArtifact repository and properly substitute values inside `./codecatalyst/workflows/Build_And_Deploy.yaml`
+* You'll need to create an ECR repository and a CodeArtifact repository and properly substitute values inside `./codecatalyst/workflows/build.yaml`
 * Instructions to create ECR repository via CLI:
     ```
   aws ecr create-repository \
